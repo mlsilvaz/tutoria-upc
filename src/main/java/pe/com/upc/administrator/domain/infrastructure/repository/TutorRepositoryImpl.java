@@ -46,7 +46,7 @@ public class TutorRepositoryImpl implements TutorRepository {
 	@Override
 	public Tutor getByName(String name, String lastName) {
 		String sql = "select t.tutor_id, t.tutor_name, t.tutor_ape_paterno, t.dni ,t.phone ,t.state_value "
-				+ "s,t.userid from tutor t where t.tutor_name= ? and t.tutor_ape_paterno = ?";
+				+ "s,t.userid from tutor t where UPPER(t.tutor_name) = ? and UPPER(t.tutor_ape_paterno) = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { name,lastName },
 				new RowMapper<Tutor>() {
 			public Tutor mapRow(ResultSet rs, int rownum) throws SQLException {
