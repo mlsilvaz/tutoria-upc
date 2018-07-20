@@ -40,7 +40,7 @@ public class UserController {
 			value = "/login", 
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE, 
 			consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Object> login2(@RequestBody UserDto userDto) {
+	public ResponseEntity<Object> login(@RequestBody UserDto userDto) {
 		log.info("Into login()");
 		try {
 			UserAuthDto userAuthDto = userApplicationService.validateUser(userDto);
