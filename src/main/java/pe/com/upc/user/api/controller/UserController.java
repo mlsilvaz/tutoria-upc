@@ -33,7 +33,8 @@ public class UserController {
 	@GetMapping("/info")
 	public String info() {
 		log.info("Into info()");
-		return "Service Active";
+//		return "Service Active";
+		return "El equipo Perseo es el mejor";
 	}
 
 	@PostMapping(
