@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import pe.com.upc.administrator.application.AdministratorService;
 import pe.com.upc.administrator.application.dto.CourseDto;
 import pe.com.upc.administrator.application.dto.TutorDto;
@@ -35,7 +38,23 @@ public class AdministratorController {
 		return "No te olvides de mis 20 soles freddy";
 //		return "Service Active";
 	}
-
+	 @ApiOperation(
+		      value = "Agrega Tutor al Sistema de tutoria",
+		      produces = MediaType.APPLICATION_JSON_UTF8_VALUE, 
+		      consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, 
+		      response = Boolean.class, 
+		      httpMethod = "POST")
+	  @ApiResponses({ 
+		    @ApiResponse(
+		        code = 200, 
+		        message = "Se agrego tutor correctamente."),
+		    @ApiResponse(
+		        code = 400, 
+		        message = "Error en la validacion de datos del Tutor a Ingresar."),
+		    @ApiResponse(
+			        code = 500, 
+			        message = "Error Interno en el servicio en el servicio.") 
+		    })
 	@PostMapping(value = "/tutor/add", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> addTutor(@RequestBody TutorDto tutorDto) {
 		log.info("Into addTutor(@RequestBody TutorDto tutorDto)");
@@ -49,7 +68,23 @@ public class AdministratorController {
 			return this.responseHandler.getAppExceptionResponse();
 		}
 	}
-
+	 @ApiOperation(
+		      value = "Agrega Course al Sistema de tutoria",
+		      produces = MediaType.APPLICATION_JSON_UTF8_VALUE, 
+		      consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, 
+		      response = Boolean.class, 
+		      httpMethod = "POST")
+	  @ApiResponses({ 
+		    @ApiResponse(
+		        code = 200, 
+		        message = "Se agrego course correctamente."),
+		    @ApiResponse(
+		        code = 400, 
+		        message = "Error en la validacion de datos del Course a Ingresar."),
+		    @ApiResponse(
+			        code = 500, 
+			        message = "Error Interno en el servicio en el servicio.") 
+		    })
 	@PostMapping(value = "/course/add", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Object> addCourse(@RequestBody CourseDto courseDto) {
 		log.info("Into addCourse(@RequestBody TutorDto tutorDto)");
